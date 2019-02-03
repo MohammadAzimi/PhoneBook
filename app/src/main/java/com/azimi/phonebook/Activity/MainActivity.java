@@ -1,18 +1,23 @@
-package com.azimi.phonebook;
+package com.azimi.phonebook.Activity;
 
-import android.content.Context;
+
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
+
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.azimi.phonebook.Adapter.RecyclerViewContacts;
+import com.azimi.phonebook.Contact;
+import com.azimi.phonebook.FakeData;
+import com.azimi.phonebook.R;
 
 import java.util.HashMap;
 
@@ -23,21 +28,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button buttonAddContact = findViewById(R.id.btn_add_contact);
-        Button buttonShowContacts = findViewById(R.id.btn_show_contacts);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        buttonAddContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog();
-            }
-        });
-        buttonShowContacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ContactsActivity.class));
-            }
-        });
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL, false));
+        RecyclerViewContacts adapter = new RecyclerViewContacts(this);
+        recyclerView.setAdapter(adapter);
+
     }
 
     private void showDialog() {
