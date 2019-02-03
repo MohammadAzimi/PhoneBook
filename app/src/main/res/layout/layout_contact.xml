@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/margin_normal">
+
+    <ImageView
+        android:id="@+id/contact_image"
+        android:layout_width="@dimen/contact_image_size_in_list"
+        android:layout_height="@dimen/contact_image_size_in_list"
+        android:layout_alignParentRight="true"
+        apps:srcCompat="@drawable/ic_android" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/contact_image"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_normal">
+
+        <TextView
+            android:id="@+id/text_contact_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_normal"
+            tools:text="Mohammad" />
+
+        <TextView
+            android:id="@+id/text_contact_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_normal"
+            tools:text="+98 936 450 4331" />
+    </LinearLayout>
+
+</RelativeLayout>

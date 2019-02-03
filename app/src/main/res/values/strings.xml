@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PhoneBook</string>
+
+    <string name="contact_list_empty">LIST IS EMPTY</string>
+    <string name="contact_name_input">Contact Name: </string>
+    <string name="contact_phone_input">Contact Phone: </string>
+    <string name="contact_add">Add contact</string>
+    <string name="contact_show_list">Show contacts</string>
+</resources>
