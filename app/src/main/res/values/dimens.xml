@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="font_small">12sp</dimen>
-    <dimen name="font_normal">14sp</dimen>
-    <dimen name="font_large">16sp</dimen>
-    <dimen name="font_large_x">18sp</dimen>
+    <dimen name="font_small">14sp</dimen>
+    <dimen name="font_normal">16sp</dimen>
+    <dimen name="font_large">18sp</dimen>
+    <dimen name="font_large_x">20sp</dimen>
 
     <dimen name="margin_small">4dp</dimen>
     <dimen name="margin_normal">8dp</dimen>
@@ -11,4 +11,8 @@
     <dimen name="margin_large_x">24dp</dimen>
 
     <dimen name="contact_image_size_in_list">60dp</dimen>
+    <dimen name="contact_image_edit">60dp</dimen>
+
+    <dimen name="edit_text_height">40dp</dimen>
+    <dimen name="icon_edit_part">32dp</dimen>
 </resources>

@@ -9,24 +9,28 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.azimi.phonebook.Contact;
+import com.azimi.phonebook.database.Contact;
 import com.azimi.phonebook.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewContacts extends RecyclerView.Adapter<RecyclerViewContacts.ContactViewHolder> {
 
-    private final LayoutInflater mInflater;
     private List<Contact> contactList; // Cached copy of contacts
+    private Context context;
+    private EventHandler mEventHandler;
 
-    public RecyclerViewContacts(Context context) {
-        mInflater = LayoutInflater.from(context);
+    public RecyclerViewContacts(Context context, EventHandler eventHandler) {
+        this.context = context;
+        mEventHandler = eventHandler;
+        contactList = new ArrayList<>();
     }
 
     @NonNull
     @Override
     public ContactViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.layout_contact, parent, false);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.layout_contact, parent, false);
         return new ContactViewHolder(itemView);
     }
 
@@ -34,7 +38,8 @@ public class RecyclerViewContacts extends RecyclerView.Adapter<RecyclerViewConta
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         if (contactList != null) {
             Contact contact = contactList.get(position);
-            holder.contactName.setText(contact.getName());
+            holder.contactName.setText(String.format(context.getResources().getString(R.string.contact_name_in_list),
+                    contact.getFirstName(), contact.getLastName()));
         } else {
             // Covers the case of data not being ready yet.
             holder.contactName.setText(R.string.contact_list_empty);
@@ -51,6 +56,10 @@ public class RecyclerViewContacts extends RecyclerView.Adapter<RecyclerViewConta
         notifyDataSetChanged();
     }
 
+    public interface EventHandler{
+        void onClick(Contact contact, int position);
+    }
+
     class ContactViewHolder extends RecyclerView.ViewHolder {
         private ImageView contactImage;
         private TextView contactPhone;
@@ -61,6 +70,14 @@ public class RecyclerViewContacts extends RecyclerView.Adapter<RecyclerViewConta
             contactImage = itemView.findViewById(R.id.contact_image);
             contactName = itemView.findViewById(R.id.text_contact_name);
             contactPhone = itemView.findViewById(R.id.text_contact_phone);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mEventHandler != null){
+                        mEventHandler.onClick(contactList.get(getAdapterPosition()), getAdapterPosition());
+                    }
+                }
+            });
         }
     }
 }

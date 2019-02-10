@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:padding="@dimen/margin_small"
+            app:title="">
+
+            <TextView
+                android:id="@+id/toolbar_text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_large"
+                android:text="@string/toolbar_title_add_contact" />
+
+            <ImageView
+                android:id="@+id/toolbar_cancel"
+                android:layout_width="@dimen/icon_edit_part"
+                android:layout_height="@dimen/icon_edit_part"
+                android:layout_gravity="start"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                app:srcCompat="@drawable/ic_close_black_24dp" />
+
+            <ImageView
+                android:id="@+id/toolbar_ok"
+                android:layout_width="@dimen/icon_edit_part"
+                android:layout_height="@dimen/icon_edit_part"
+                android:layout_gravity="end"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                app:srcCompat="@drawable/ic_check_black_24dp" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/layout_edit_contact_content" />
+    </ScrollView>
+</LinearLayout>

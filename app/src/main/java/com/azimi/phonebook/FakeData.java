@@ -1,5 +1,7 @@
 package com.azimi.phonebook;
 
+import com.azimi.phonebook.database.Contact;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

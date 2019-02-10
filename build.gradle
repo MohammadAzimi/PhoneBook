@@ -21,7 +21,10 @@ allprojects {
         jcenter()
     }
 }
-
+ext {
+    roomVersion = '1.1.1'
+    archLifecycleVersion = '1.1.1'
+}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
