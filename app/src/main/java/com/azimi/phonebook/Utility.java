@@ -10,7 +10,9 @@ public class Utility {
     public static final int ADD_CONTACT = 0;
     public static final int EDIT_CONTACT = 1;
 
-    public static final String EXTRA_ID = "id";
+    public static final String EXTRA_CONTACT_ID = "contactId";
+    public static final String EXTRA_PHONE_ID = "phoneId";
+    public static final String EXTRA_EMAIL_ID = "emailId";
     public static final String EXTRA_FIRST_NAME = "firstName";
     public static final String EXTRA_LAST_NAME = "lastName";
     public static final String EXTRA_PHONE_NUMBER = "phoneNumber";

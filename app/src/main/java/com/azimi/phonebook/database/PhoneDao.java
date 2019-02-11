@@ -24,4 +24,7 @@ public interface PhoneDao{
 
     @Delete
     void delete(Phone phone);
+
+    @Query("SELECT * FROM table_phone WHERE id = :phoneID")
+    Phone getPhoneById(String phoneID);
 }

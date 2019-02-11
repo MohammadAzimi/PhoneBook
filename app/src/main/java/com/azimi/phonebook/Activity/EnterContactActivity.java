@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.azimi.phonebook.R;
@@ -27,9 +28,12 @@ public class EnterContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_contact);
 
+        //Setup toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
+        TextView toolbarTitle = findViewById(R.id.toolbar_text_title);
+        toolbarTitle.setText(R.string.toolbar_title_add_contact);
 
         txtFirstName = findViewById(R.id.txt_first_name);
         txtLastName = findViewById(R.id.txt_last_name);

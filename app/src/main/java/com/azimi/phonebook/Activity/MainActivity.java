@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(Contact contact, int position) {
                         Intent intent = new Intent(MainActivity.this, ShowContactActivity.class);
-                        intent.putExtra(Utility.EXTRA_ID, contact.getId());
+                        intent.putExtra(Utility.EXTRA_CONTACT_ID, contact.getId());
                         startActivity(intent);
                     }
                 });
@@ -84,15 +84,19 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_CONTACT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Contact contact = new Contact(data.getStringExtra(Utility.EXTRA_FIRST_NAME),
+            Contact contact = new Contact(
+                    data.getStringExtra(Utility.EXTRA_FIRST_NAME) + data.getStringExtra(Utility.EXTRA_LAST_NAME),
+                    data.getStringExtra(Utility.EXTRA_FIRST_NAME),
                     data.getStringExtra(Utility.EXTRA_LAST_NAME),
                     data.getStringExtra(Utility.EXTRA_NOTE));
             //contactViewModel.insert(contact);
 
-            Phone phone = new Phone(contact.getId(),
+            Phone phone = new Phone(contact.getId() + data.getStringExtra(Utility.EXTRA_PHONE_NUMBER),
+                    contact.getId(),
                     Utility.MOBILE,
                     data.getStringExtra(Utility.EXTRA_PHONE_NUMBER));
-            Email email = new Email(contact.getId(),
+            Email email = new Email(contact.getId() + data.getStringExtra(Utility.EXTRA_EMAIL),
+                    contact.getId(),
                     data.getStringExtra(Utility.EXTRA_EMAIL));
             contactViewModel.insert(contact, phone, email);
 

@@ -46,8 +46,12 @@ public class ContactViewModel extends AndroidViewModel {
 
     public void insert(Contact contact, Phone phone, Email email) {
         dataRepository.insert(contact);
-        dataRepository.insert(phone);
-        dataRepository.insert(email);
+        if (!phone.getNumber().equals("")) {
+            dataRepository.insert(phone);
+        }
+        if (!email.getEmail().equals("")) {
+            dataRepository.insert(email);
+        }
     }
 
     public void insert(Contact contact) {

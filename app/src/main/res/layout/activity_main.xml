@@ -15,7 +15,28 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize" />
+            android:layout_height="?android:attr/actionBarSize">
+
+            <ImageView
+                android:id="@+id/github"
+                android:layout_width="@dimen/icon_edit_part"
+                android:layout_height="@dimen/icon_edit_part"
+                android:layout_gravity="start"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                app:srcCompat="@drawable/ic_github" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:text="@string/app_name"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_large"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/layout_main_contain" />
@@ -26,5 +47,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/margin_large"
-        app:srcCompat="@drawable/ic_add_black_24dp"/>
+        app:srcCompat="@drawable/ic_add_black_24dp" />
 </android.support.design.widget.CoordinatorLayout>

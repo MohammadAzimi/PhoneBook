@@ -25,12 +25,13 @@ public interface ContactDao {
     @Delete
     void delete(Contact contact);
 
-    @Query("SELECT table_contacts.id, table_contacts.first_name, table_contacts.last_name," +
+    @Query("SELECT table_contacts.id, table_phone.id AS phone_id, table_emails.id AS email_id," +
+            " table_contacts.first_name, table_contacts.last_name," +
             " table_phone.type, table_phone.number, table_emails.email, table_contacts.note" +
             " FROM table_contacts" +
-            " INNER JOIN table_phone ON id = table_phone.contact_id" +
-            " INNER JOIN table_emails ON id = table_emails.contact_id" +
-            " WHERE id = :contactId")
+            " LEFT OUTER JOIN table_phone ON table_contacts.id = table_phone.contact_id" +
+            " LEFT OUTER JOIN table_emails ON table_contacts.id = table_emails.contact_id" +
+            " WHERE table_contacts.id = :contactId")
     LiveData<List<ContactWithDetail>> getContactsWithDetail(String contactId);
 
 //    @Query("SELECT * " +

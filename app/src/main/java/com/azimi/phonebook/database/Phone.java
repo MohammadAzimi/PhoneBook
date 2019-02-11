@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 
 
 @Entity(tableName = "table_phone",
-        primaryKeys = {"contact_id", "number"},
+        primaryKeys = {"contact_id", "id"},
         foreignKeys = {@ForeignKey(entity = Contact.class,
                 parentColumns = "id",
                 childColumns = "contact_id",
@@ -15,6 +15,8 @@ import android.support.annotation.NonNull;
                 onUpdate = ForeignKey.CASCADE)})
 public class Phone {
 
+    @NonNull
+    private String id;
     @NonNull
     @ColumnInfo(name = "contact_id")
     private String contactId;
@@ -26,10 +28,11 @@ public class Phone {
     private int type;
 
 
-    public Phone(@NonNull String contactId, int type, @NonNull String number) {
+    public Phone(@NonNull String id, @NonNull String contactId, int type, @NonNull String number) {
         this.contactId = contactId;
         this.type = type;
         this.number = number;
+        this.id = id;
     }
 
     @NonNull
@@ -52,5 +55,14 @@ public class Phone {
 
     public void setNumber(@NonNull String number) {
         this.number = number;
+    }
+
+    @NonNull
+    public String getId() {
+        return id;
+    }
+
+    public void setId(@NonNull String id){
+        this.id = id;
     }
 }

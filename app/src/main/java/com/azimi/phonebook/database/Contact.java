@@ -2,7 +2,6 @@ package com.azimi.phonebook.database;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 
@@ -24,10 +23,10 @@ public class Contact {
     private String note;
 
 
-    public Contact(String firstName, String lastName, String note) {
+    public Contact(@NonNull String id, String firstName, String lastName, String note) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.id = firstName + lastName;
+        this.id = id;
         this.note = note;
     }
 

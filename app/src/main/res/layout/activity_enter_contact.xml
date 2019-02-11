@@ -24,7 +24,8 @@
                 android:layout_gravity="center"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/font_large"
-                android:text="@string/toolbar_title_add_contact" />
+                android:textStyle="bold"
+                tools:text="@string/toolbar_title_add_contact" />
 
             <ImageView
                 android:id="@+id/toolbar_cancel"

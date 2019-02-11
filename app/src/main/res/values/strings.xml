@@ -12,6 +12,7 @@
     <string name="contact_notes">Notes</string>
     <string name="btn_add_field">Add another field</string>
     <string name="toolbar_title_add_contact">Add new contact</string>
+    <string name="toolbar_title_edit_contact">Edit contact</string>
 
     <!-- Toasts -->
     <string name="toast_contact_added_successfully">Contact Added Successfully! </string>

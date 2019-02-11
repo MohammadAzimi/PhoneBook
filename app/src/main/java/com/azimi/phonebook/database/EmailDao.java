@@ -23,5 +23,8 @@ public interface EmailDao{
     LiveData<List<Email>> getEmailsByContactId(String contactId);
 
     @Delete
-    void deletEmail(Email email);
+    void delete(Email email);
+
+    @Query("SELECT * FROM table_emails WHERE id = :emailId")
+    Email getEmailById(String emailId);
 }

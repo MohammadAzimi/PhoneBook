@@ -6,7 +6,7 @@ import android.arch.persistence.room.ForeignKey;
 import android.support.annotation.NonNull;
 
 @Entity(tableName = "table_emails",
-        primaryKeys = {"contact_id", "email"},
+        primaryKeys = {"contact_id", "id"},
         foreignKeys = {@ForeignKey(entity = Contact.class,
                 parentColumns = "id",
                 childColumns = "contact_id",
@@ -15,14 +15,17 @@ import android.support.annotation.NonNull;
 public class Email {
 
     @NonNull
+    private String id;
+    @NonNull
     @ColumnInfo(name = "contact_id")
     private String contactId;
     @NonNull
     private String email;
 
-    public Email(@NonNull String contactId, @NonNull String email) {
+    public Email(@NonNull String id, @NonNull String contactId, @NonNull String email) {
         this.contactId = contactId;
         this.email = email;
+        this.id = id;
     }
 
     @NonNull
@@ -37,5 +40,14 @@ public class Email {
 
     public void setEmail(@NonNull String email) {
         this.email = email;
+    }
+
+    @NonNull
+    public String getId() {
+        return id;
+    }
+
+    public void setId(@NonNull String id){
+        this.id = id;
     }
 }
