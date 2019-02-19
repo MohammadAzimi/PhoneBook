@@ -18,4 +18,6 @@ public class Utility {
     public static final String EXTRA_PHONE_NUMBER = "phoneNumber";
     public static final String EXTRA_EMAIL = "email";
     public static final String EXTRA_NOTE = "note";
+
+    public static final String FIREBASE_EXT_ADD_FIELD = "add_field";
 }

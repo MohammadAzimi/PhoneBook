@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,11 +16,13 @@ import com.azimi.phonebook.Utility;
 import com.azimi.phonebook.database.Contact;
 import com.azimi.phonebook.database.Email;
 import com.azimi.phonebook.database.Phone;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.Objects;
 
 public class EditContactActivity extends AppCompatActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     private String contactID;
     private String phoneID;
     private String emailID;
@@ -28,6 +31,7 @@ public class EditContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_contact);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         contactID = getIntent().getStringExtra(Utility.EXTRA_CONTACT_ID);
         phoneID = getIntent().getStringExtra(Utility.EXTRA_PHONE_ID);
@@ -96,6 +100,17 @@ public class EditContactActivity extends AppCompatActivity {
             public void onClick(View v) {
                 setResult(RESULT_CANCELED);
                 finish();
+            }
+        });
+
+        Button btnAddAnotherField = findViewById(R.id.btn_add_field);
+        btnAddAnotherField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 2019-02-19 add dialog to do actions
+                Bundle bundle = new Bundle();
+                bundle.putString(Utility.FIREBASE_EXT_ADD_FIELD, "true");
+                mFirebaseAnalytics.logEvent(Utility.FIREBASE_EXT_ADD_FIELD, bundle);
             }
         });
     }

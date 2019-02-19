@@ -28,9 +28,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="5c5c5c" />
-                            <entry key="outputName" value="ic_arrow_back_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\msi" />
+                            <entry key="outputName" value="ic_github" />
+                            <entry key="sourceFile" value="D:\Dars\images\github.svg" />
                           </map>
                         </option>
                       </PersistentState>

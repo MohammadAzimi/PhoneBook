@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,10 +13,12 @@ import android.widget.Toast;
 
 import com.azimi.phonebook.R;
 import com.azimi.phonebook.Utility;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.Objects;
 
 public class EnterContactActivity extends AppCompatActivity {
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     private EditText txtFirstName;
     private EditText txtLastName;
@@ -27,6 +30,7 @@ public class EnterContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_contact);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         //Setup toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -71,6 +75,17 @@ public class EnterContactActivity extends AppCompatActivity {
                 Intent replyIntent = new Intent();
                 setResult(RESULT_CANCELED, replyIntent);
                 finish();
+            }
+        });
+
+        Button btnAddAnotherField = findViewById(R.id.btn_add_field);
+        btnAddAnotherField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 2019-02-19 add dialog to do actions
+                Bundle bundle = new Bundle();
+                bundle.putString(Utility.FIREBASE_EXT_ADD_FIELD, "true");
+                mFirebaseAnalytics.logEvent(Utility.FIREBASE_EXT_ADD_FIELD, bundle);
             }
         });
     }
