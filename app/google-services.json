@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "782403442950",
+    "firebase_url": "https://phonebook-139d1.firebaseio.com",
+    "project_id": "phonebook-139d1",
+    "storage_bucket": "phonebook-139d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782403442950:android:7279800492d64510",
+        "android_client_info": {
+          "package_name": "com.azimi.phonebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "782403442950-3fa6pvgsue9js8t2bbp52ui5u6pkvtca.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.azimi.phonebook",
+            "certificate_hash": "f9616c6acf3215c603beeda7c2c0c418f075022e"
+          }
+        },
+        {
+          "client_id": "782403442950-v1h9dm5reu871s6vm8spppljcrc82n5i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvYSTrZenQneDYaTfCGgnPyhyVvBMQdf8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782403442950-v1h9dm5reu871s6vm8spppljcrc82n5i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
