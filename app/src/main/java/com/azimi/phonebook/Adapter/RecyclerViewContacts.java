@@ -56,7 +56,7 @@ public class RecyclerViewContacts extends RecyclerView.Adapter<RecyclerViewConta
         notifyDataSetChanged();
     }
 
-    public interface EventHandler{
+    public interface EventHandler {
         void onClick(Contact contact, int position);
     }
 
@@ -73,7 +73,7 @@ public class RecyclerViewContacts extends RecyclerView.Adapter<RecyclerViewConta
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mEventHandler != null){
+                    if (mEventHandler != null) {
                         mEventHandler.onClick(contactList.get(getAdapterPosition()), getAdapterPosition());
                     }
                 }

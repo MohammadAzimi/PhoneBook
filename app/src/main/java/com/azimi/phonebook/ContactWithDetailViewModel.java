@@ -15,51 +15,56 @@ import java.util.List;
 
 public class ContactWithDetailViewModel extends AndroidViewModel {
     private DataRepository dataRepository;
-    private LiveData<List<ContactWithDetail>> contact;
+    private LiveData<List<ContactWithDetail>> contactWithDetails;
 
     public ContactWithDetailViewModel(@NonNull Application application) {
         super(application);
         dataRepository = new DataRepository(application);
-//        this.contact = dataRepository.getContactDetails(contact);
+//        this.contactWithDetails = dataRepository.getContactDetails(contactWithDetails);
     }
 
-    public LiveData<List<ContactWithDetail>> getContact(String contactId) {
-        this.contact = dataRepository.getContactDetails(contactId);
-        return contact;
+    public LiveData<List<ContactWithDetail>> getContactWithDetails(String contactId) {
+        this.contactWithDetails = dataRepository.getContactDetails(contactId);
+        return contactWithDetails;
     }
 
-    public void update(Contact contact, Phone phone, Email email) {
+    public void update(Contact contact, List<Phone> phones, List<Email> emails) {
         dataRepository.update(contact);
-
-        //check whether there is a phone to update
-        if (!phone.getId().equals("")) {
-            if (phone.getNumber().equals("")) {
-                dataRepository.delete(phone);
-            } else {
-                dataRepository.update(phone);
+        if (!phones.isEmpty())
+            for (Phone phone : phones) {
+                //check whether there is a phone to update
+                if (!phone.getId().equals("")) {
+                    if (phone.getNumber().equals("")) {
+                        dataRepository.delete(phone);
+                    } else {
+                        dataRepository.update(phone);
+                    }
+                } else {
+                    if (!phone.getNumber().equals("")) {
+                        phone.setId(phone.getContactId() + phone.getNumber());
+                        dataRepository.insert(phone);
+                    }
+                }
             }
-        } else {
-            if (!phone.getNumber().equals("")){
-                phone.setId(phone.getContactId()+phone.getNumber());
-                dataRepository.insert(phone);
+        if (!emails.isEmpty())
+            for (Email email : emails) {
+                //check whether there is an email to update
+                if (!email.getId().equals("")) {
+                    if (email.getEmail().equals("")) {
+                        dataRepository.delete(email);
+                    } else {
+                        dataRepository.update(email);
+                    }
+                } else {
+                    if (!email.getEmail().equals("")) {
+                        email.setId(email.getContactId() + email.getEmail());
+                        dataRepository.insert(email);
+                    }
+                }
             }
-        }
-
-        //check whether there is an email to update
-        if (!email.getId().equals("")) {
-            if (email.getEmail().equals("")) {
-                dataRepository.delete(email);
-            } else {
-                dataRepository.update(email);
-            }
-        } else {
-            if (!email.getEmail().equals("")){
-                email.setId(email.getContactId()+email.getEmail());
-                dataRepository.insert(email);}
-        }
     }
 
-    public void deleteContact(Contact contact){
+    public void deleteContact(Contact contact) {
         dataRepository.delete(contact);
     }
 }

@@ -21,56 +21,100 @@
         android:id="@+id/imageView5"
         android:layout_width="@dimen/icon_edit_part"
         android:layout_height="@dimen/icon_edit_part"
+        android:layout_marginTop="@dimen/margin_small"
         android:layout_marginEnd="@dimen/margin_normal"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_email"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/txt_email"
+        app:layout_constraintTop_toTopOf="@+id/linear_emails"
         app:srcCompat="@drawable/ic_mail_outline_black_24dp" />
 
     <EditText
         android:id="@+id/txt_note"
         android:layout_width="0dp"
-        android:layout_height="@dimen/edit_text_height"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_marginTop="@dimen/margin_normal"
         android:hint="@string/contact_notes"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         android:maxLength="256"
         android:maxLines="4"
+        android:minHeight="@dimen/edit_text_height"
         android:textAlignment="textStart"
         android:textSize="@dimen/font_normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/txt_email" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_email" />
 
-    <EditText
-        android:id="@+id/txt_email"
+    <LinearLayout
+        android:id="@+id/linear_emails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_phone">
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_add_email"
         android:layout_width="0dp"
         android:layout_height="@dimen/edit_text_height"
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_marginTop="@dimen/margin_normal"
-        android:hint="@string/contact_email"
-        android:inputType="textEmailAddress"
+        android:background="@drawable/selector_add_more"
+        android:drawableEnd="@drawable/ic_add_circle_primary_dark_24dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/margin_small"
+        android:paddingEnd="@dimen/margin_small"
+        android:text="@string/btn_add_email"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
         android:textSize="@dimen/font_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/linear_emails" />
+
+
+    <LinearLayout
+        android:id="@+id/linear_phones"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/txt_phone_number" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_last_name">
 
-    <EditText
-        android:id="@+id/txt_phone_number"
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_add_phone"
         android:layout_width="0dp"
         android:layout_height="@dimen/edit_text_height"
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_marginTop="@dimen/margin_normal"
-        android:hint="@string/contact_phone_number"
-        android:inputType="phone"
+        android:background="@drawable/selector_add_more"
+        android:drawableEnd="@drawable/ic_add_circle_primary_dark_24dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/margin_small"
+        android:paddingEnd="@dimen/margin_small"
+        android:text="@string/btn_add_phone"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
         android:textSize="@dimen/font_normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/txt_last_name" />
+        app:layout_constraintTop_toBottomOf="@+id/linear_phones" />
 
     <EditText
         android:id="@+id/txt_last_name"
@@ -120,10 +164,10 @@
         android:id="@+id/imageView2"
         android:layout_width="@dimen/icon_edit_part"
         android:layout_height="@dimen/icon_edit_part"
+        android:layout_marginTop="@dimen/margin_small"
         android:layout_marginEnd="@dimen/margin_normal"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_phone_number"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/txt_phone_number"
+        app:layout_constraintTop_toTopOf="@+id/linear_phones"
         app:srcCompat="@drawable/ic_phone_black_24dp" />
 
     <Button
@@ -131,6 +175,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_normal"
+        android:background="@drawable/selector_add_more"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/btn_add_field"
         android:textSize="@dimen/font_normal"
         app:layout_constraintEnd_toEndOf="parent"

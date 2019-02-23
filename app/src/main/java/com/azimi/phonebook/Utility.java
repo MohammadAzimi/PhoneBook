@@ -20,4 +20,7 @@ public class Utility {
     public static final String EXTRA_NOTE = "note";
 
     public static final String FIREBASE_EXT_ADD_FIELD = "add_field";
+
+    public static final int INFLATE_PHONE = 0;
+    public static final int INFLATE_EMAIL = 1;
 }

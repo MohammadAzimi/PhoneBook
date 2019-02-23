@@ -28,6 +28,7 @@ import com.azimi.phonebook.database.Contact;
 import com.azimi.phonebook.database.Email;
 import com.azimi.phonebook.database.Phone;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -89,16 +90,11 @@ public class MainActivity extends AppCompatActivity {
                     data.getStringExtra(Utility.EXTRA_FIRST_NAME),
                     data.getStringExtra(Utility.EXTRA_LAST_NAME),
                     data.getStringExtra(Utility.EXTRA_NOTE));
-            //contactViewModel.insert(contact);
 
-            Phone phone = new Phone(contact.getId() + data.getStringExtra(Utility.EXTRA_PHONE_NUMBER),
-                    contact.getId(),
-                    Utility.MOBILE,
-                    data.getStringExtra(Utility.EXTRA_PHONE_NUMBER));
-            Email email = new Email(contact.getId() + data.getStringExtra(Utility.EXTRA_EMAIL),
-                    contact.getId(),
-                    data.getStringExtra(Utility.EXTRA_EMAIL));
-            contactViewModel.insert(contact, phone, email);
+            List<Phone> phones = data.getParcelableArrayListExtra(Utility.EXTRA_PHONE_NUMBER);
+            List<Email> emails = data.getParcelableArrayListExtra(Utility.EXTRA_EMAIL);
+
+            contactViewModel.insert(contact, phones, emails);
 
             Toast.makeText(
                     getApplicationContext(),

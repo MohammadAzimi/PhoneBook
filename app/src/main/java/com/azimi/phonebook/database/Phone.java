@@ -3,7 +3,12 @@ package com.azimi.phonebook.database;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
+
+import java.util.Objects;
 
 
 @Entity(tableName = "table_phone",
@@ -13,7 +18,7 @@ import android.support.annotation.NonNull;
                 childColumns = "contact_id",
                 onDelete = ForeignKey.CASCADE,
                 onUpdate = ForeignKey.CASCADE)})
-public class Phone {
+public class Phone implements Parcelable {
 
     @NonNull
     private String id;
@@ -62,7 +67,45 @@ public class Phone {
         return id;
     }
 
-    public void setId(@NonNull String id){
+    public void setId(@NonNull String id) {
         this.id = id;
     }
+
+    @Ignore
+    protected Phone(Parcel in) {
+        contactId = Objects.requireNonNull(in.readString());
+        type = in.readInt();
+        number = Objects.requireNonNull(in.readString());
+        id = Objects.requireNonNull(in.readString());
+    }
+
+    @Ignore
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Ignore
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(contactId);
+        dest.writeInt(type);
+        dest.writeString(number);
+        dest.writeString(id);
+    }
+
+    @Ignore
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Phone> CREATOR = new Parcelable.Creator<Phone>() {
+
+        @Override
+        public Phone createFromParcel(Parcel in) {
+            return new Phone(in);
+        }
+
+        @Override
+        public Phone[] newArray(int size) {
+            return new Phone[size];
+        }
+    };
 }

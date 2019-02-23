@@ -13,6 +13,12 @@
     <dimen name="contact_image_size_in_list">60dp</dimen>
     <dimen name="contact_image_edit">60dp</dimen>
 
+    <dimen name="button_left_top_radius">7dp</dimen>
+    <dimen name="button_right_bottom_radius">7dp</dimen>
+    <dimen name="button_stork_width">2dp</dimen>
+
     <dimen name="edit_text_height">40dp</dimen>
     <dimen name="icon_edit_part">32dp</dimen>
+    <dimen name="main_text_height">24dp</dimen>
+    <dimen name="sub_text_height">16dp</dimen>
 </resources>
