@@ -19,7 +19,7 @@ public interface ContactDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void update(Contact contact);
 
-    @Query("SELECT * FROM table_contacts")
+    @Query("SELECT * FROM table_contacts ORDER BY first_name")
     LiveData<List<Contact>> getAllContacts();
 
     @Delete

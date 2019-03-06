@@ -3,10 +3,14 @@ package com.azimi.phonebook.Activity;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BaseTransientBottomBar;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,12 +18,14 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.azimi.phonebook.Adapter.RecyclerViewContacts;
+import com.azimi.phonebook.Adapter.RecyclerItemTouchHelper;
+import com.azimi.phonebook.Adapter.RecyclerContactsAdapter;
 import com.azimi.phonebook.ContactViewModel;
 import com.azimi.phonebook.FakeData;
 import com.azimi.phonebook.R;
@@ -28,17 +34,20 @@ import com.azimi.phonebook.database.Contact;
 import com.azimi.phonebook.database.Email;
 import com.azimi.phonebook.database.Phone;
 import com.crashlytics.android.Crashlytics;
+
 import io.fabric.sdk.android.Fabric;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
     private ContactViewModel contactViewModel;
+    private RecyclerContactsAdapter adapter;
+    private CoordinatorLayout coordinatorLayout;
     public static final int NEW_CONTACT_ACTIVITY_REQUEST_CODE = 1;
+    boolean isDeleted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
+        coordinatorLayout = findViewById(R.id.coordinator_layout);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,8 +73,13 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false));
-        final RecyclerViewContacts adapter = new RecyclerViewContacts(this,
-                new RecyclerViewContacts.EventHandler() {
+
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(
+                0, ItemTouchHelper.LEFT, this);
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
+
+        adapter = new RecyclerContactsAdapter(this,
+                new RecyclerContactsAdapter.EventHandler() {
                     @Override
                     public void onClick(Contact contact, int position) {
                         Intent intent = new Intent(MainActivity.this, ShowContactActivity.class);
@@ -159,4 +174,44 @@ public class MainActivity extends AppCompatActivity {
         FakeData.hashContacts.add(contact);
         Toast.makeText(MainActivity.this, "Contact added successfully", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+        if (viewHolder instanceof RecyclerContactsAdapter.ContactViewHolder) {
+            // get the removed item name to display it in snack bar
+            //String name = cartList.get(viewHolder.getAdapterPosition()).getName();
+
+            // backup of removed item for undo purpose
+            final Contact deletedContact = adapter.getContact(viewHolder.getAdapterPosition());
+            final int deletedIndex = viewHolder.getAdapterPosition();
+            isDeleted = true;
+            // remove the item from recycler view
+            adapter.removeItem(viewHolder.getAdapterPosition());
+
+            // showing snack bar with Undo option
+            Snackbar snackbar = Snackbar
+                    .make(coordinatorLayout, R.string.snack_bar_contact_deleted, Snackbar.LENGTH_LONG);
+            snackbar.setAction("UNDO", new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    // undo is selected, restore the deleted item
+                    adapter.restoreItem(deletedContact, deletedIndex);
+                    isDeleted = false;
+                }
+            });
+            //snackbar.setActionTextColor(Color.YELLOW);
+            snackbar.addCallback(new BaseTransientBottomBar.BaseCallback<Snackbar>() {
+                @Override
+                public void onDismissed(Snackbar transientBottomBar, int event) {
+                    super.onDismissed(transientBottomBar, event);
+                    if (isDeleted){
+                        contactViewModel.delete(deletedContact);
+                    }
+                }
+            });
+            snackbar.show();
+        }
+    }
+
 }

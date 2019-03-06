@@ -12,6 +12,7 @@
 
     <dimen name="contact_image_size_in_list">60dp</dimen>
     <dimen name="contact_image_edit">60dp</dimen>
+    <dimen name="delete_icon_size">46dp</dimen>
 
     <dimen name="button_left_top_radius">7dp</dimen>
     <dimen name="button_right_bottom_radius">7dp</dimen>

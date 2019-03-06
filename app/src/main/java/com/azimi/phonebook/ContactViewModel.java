@@ -71,4 +71,8 @@ public class ContactViewModel extends AndroidViewModel {
         }
     }
 
+    public void delete(Contact contact){
+        dataRepository.delete(contact);
+    }
+
 }

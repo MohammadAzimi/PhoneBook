@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.azimi.phonebook.database.Contact;
@@ -15,13 +16,13 @@ import com.azimi.phonebook.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewContacts extends RecyclerView.Adapter<RecyclerViewContacts.ContactViewHolder> {
+public class RecyclerContactsAdapter extends RecyclerView.Adapter<RecyclerContactsAdapter.ContactViewHolder> {
 
     private List<Contact> contactList; // Cached copy of contacts
     private Context context;
     private EventHandler mEventHandler;
 
-    public RecyclerViewContacts(Context context, EventHandler eventHandler) {
+    public RecyclerContactsAdapter(Context context, EventHandler eventHandler) {
         this.context = context;
         mEventHandler = eventHandler;
         contactList = new ArrayList<>();
@@ -56,20 +57,41 @@ public class RecyclerViewContacts extends RecyclerView.Adapter<RecyclerViewConta
         notifyDataSetChanged();
     }
 
+    public Contact getContact(int position){
+        return contactList.get(position);
+    }
+
+    public void removeItem(int position) {
+        contactList.remove(position);
+        // notify the item removed by position
+        // to perform recycler view delete animations
+        // NOTE: don't call notifyDataSetChanged()
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(Contact contact, int position) {
+        contactList.add(position, contact);
+        // notify item added by position
+        notifyItemInserted(position);
+    }
+
     public interface EventHandler {
         void onClick(Contact contact, int position);
     }
 
-    class ContactViewHolder extends RecyclerView.ViewHolder {
+    public class ContactViewHolder extends RecyclerView.ViewHolder {
         private ImageView contactImage;
         private TextView contactPhone;
         private TextView contactName;
+        View viewBackground, viewForeground;
 
         private ContactViewHolder(View itemView) {
             super(itemView);
             contactImage = itemView.findViewById(R.id.contact_image);
             contactName = itemView.findViewById(R.id.text_contact_name);
             contactPhone = itemView.findViewById(R.id.text_contact_phone);
+            viewBackground = itemView.findViewById(R.id.view_background);
+            viewForeground = itemView.findViewById(R.id.view_foreground);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
