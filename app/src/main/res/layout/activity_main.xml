@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Activity.MainActivity"
+    tools:context=".activity.MainActivity"
     android:id="@+id/coordinator_layout">
 
     <android.support.design.widget.AppBarLayout

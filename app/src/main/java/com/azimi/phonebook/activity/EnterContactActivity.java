@@ -1,7 +1,6 @@
-package com.azimi.phonebook.Activity;
+package com.azimi.phonebook.activity;
 
 import android.content.Intent;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -17,7 +16,6 @@ import com.azimi.phonebook.R;
 import com.azimi.phonebook.Utility;
 import com.azimi.phonebook.database.Email;
 import com.azimi.phonebook.database.Phone;
-import com.google.android.gms.common.SignInButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;

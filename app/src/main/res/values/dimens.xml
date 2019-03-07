@@ -17,9 +17,12 @@
     <dimen name="button_left_top_radius">7dp</dimen>
     <dimen name="button_right_bottom_radius">7dp</dimen>
     <dimen name="button_stork_width">2dp</dimen>
+    <dimen name="rectangle_radius">20dp</dimen>
 
     <dimen name="edit_text_height">40dp</dimen>
     <dimen name="icon_edit_part">32dp</dimen>
     <dimen name="main_text_height">24dp</dimen>
     <dimen name="sub_text_height">16dp</dimen>
+    <dimen name="list_item_spacing">16dp</dimen>
+    <dimen name="list_item_spacing_half">8dp</dimen>
 </resources>

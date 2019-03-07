@@ -1,9 +1,8 @@
-package com.azimi.phonebook.Activity;
+package com.azimi.phonebook.activity;
 
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.Nullable;

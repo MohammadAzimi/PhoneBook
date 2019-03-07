@@ -1,4 +1,4 @@
-package com.azimi.phonebook.Activity;
+package com.azimi.phonebook.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.azimi.phonebook.R;
 import com.azimi.phonebook.Utility;
-import com.azimi.phonebook.database.Contact;
 import com.azimi.phonebook.database.Email;
 import com.azimi.phonebook.database.Phone;
 import com.google.firebase.analytics.FirebaseAnalytics;

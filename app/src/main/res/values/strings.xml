@@ -39,5 +39,7 @@
     <string name="menu_edit_contact">Edit contact</string>
     <string name="menu_delete_contact">Delete contact</string>
 
-    <string name="delete">delete</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="ensure_delete">This contact will be deleted.</string>
 </resources>

@@ -10,13 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.EditContactActivity"></activity>
-        <activity android:name=".Activity.ShowContactActivity" />
-        <activity android:name=".Activity.EnterContactActivity" />
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".activity.EditContactActivity"/>
+        <activity android:name=".activity.ShowContactActivity" />
+        <activity android:name=".activity.EnterContactActivity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

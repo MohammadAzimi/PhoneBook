@@ -1,4 +1,4 @@
-package com.azimi.phonebook.Activity;
+package com.azimi.phonebook.activity;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -13,12 +13,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.azimi.phonebook.Adapter.RecyclerViewPhoneEmail;
 import com.azimi.phonebook.ContactWithDetailViewModel;
+import com.azimi.phonebook.EnsureDeleteDialogFragment;
 import com.azimi.phonebook.R;
 import com.azimi.phonebook.Utility;
 import com.azimi.phonebook.database.Contact;
@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ShowContactActivity extends AppCompatActivity {
+public class ShowContactActivity extends AppCompatActivity implements EnsureDeleteDialogFragment.OnDelete{
     private static final int EDIT_CONTACT_ACTIVITY_REQUEST_CODE = 2;
     private ContactWithDetailViewModel contactVM;
     private Contact cashedContact;
@@ -151,7 +151,7 @@ public class ShowContactActivity extends AppCompatActivity {
                 return true;
 
             case R.id.delete_contact:
-                contactVM.deleteContact(cashedContact);
+                deleteContact();
                 return true;
 
             default:
@@ -183,5 +183,15 @@ public class ShowContactActivity extends AppCompatActivity {
                     R.string.toast_contact_edited_cancelled,
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void deleteContact(){
+        EnsureDeleteDialogFragment bottomSheetFragment = EnsureDeleteDialogFragment.newInstance();
+        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
+    }
+
+    @Override
+    public void delete() {
+        contactVM.deleteContact(cashedContact);
     }
 }
