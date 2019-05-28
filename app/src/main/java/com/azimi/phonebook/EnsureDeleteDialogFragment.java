@@ -47,7 +47,7 @@ public class EnsureDeleteDialogFragment extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.layout_bottom_sheet, container, false);
+        View view = inflater.inflate(R.layout.fragment_bottom_sheet_delete, container, false);
         Button btnDelete = view.findViewById(R.id.btn_delete);
         Button btnCancel = view.findViewById(R.id.btn_cancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
