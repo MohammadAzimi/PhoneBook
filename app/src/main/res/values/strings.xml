@@ -41,5 +41,5 @@
 
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
-    <string name="ensure_delete">This contact will be deleted.</string>
+    <string name="ensure_delete">Are you sure to delete this contact?</string>
 </resources>

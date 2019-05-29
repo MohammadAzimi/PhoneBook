@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">دفترچه تلفن</string>
+
+    <string name="contact_list_empty">لیست مخاطبین خالی است</string>
+    <string name="contact_name_input">نام مخاطب: </string>
+    <string name="contact_phone_input">شماره مخاطب: </string>
+
+    <string name="contact_first_name">نام</string>
+    <string name="contact_last_name">نام خانوادگی</string>
+    <string name="contact_phone_number">شماره تلفن</string>
+    <string name="contact_email">رایانامه</string>
+    <string name="contact_notes">یادداشت ها</string>
+    <string name="btn_add_field">افزودن موارد بیشتر</string>
+    <string name="btn_add_phone">افزودن شماره تلفن</string>
+    <string name="btn_add_email">افزودن رایانامه</string>
+    <string name="toolbar_title_add_contact">افزودن مخاطب جدید</string>
+    <string name="toolbar_title_edit_contact">ویرایش مخاطب</string>
+
+    <!-- Toasts -->
+    <string name="toast_contact_added_successfully">مخاطب با موفقیت اضافه شد! </string>
+    <string name="toast_contact_edited_successfully">مخاطب با موفقیت ویرایش شد! </string>
+    <string name="toast_contact_added_cancelled">افزودن مخاطب لغو شد! </string>
+    <string name="toast_contact_edited_cancelled">ویرایش مخاطب لغو شد! </string>
+
+    <!-- SnackBars -->
+    <string name="snack_bar_contact_deleted">مخاطب پاک شد</string>
+    <string name="snackBar_contact_added">مخاطب افزوده شد</string>
+
+
+    <string name="contact_show_list">نمایش مخاطبین</string>
+    <string name="contact_name_in_list">%1$s %2$s</string>
+
+    <!--Validate alarms-->
+    <string name="name_is_blank">لطفا یک نام برای مخاطب وارد کنید! </string>
+    <string name="number_is_blank">حداقل یک شماره تلفن وارد کنید! </string>
+
+    <!--3 dot menus-->
+    <string name="menu_share_contact">اشتراک مخاطب</string>
+    <string name="menu_edit_contact">ویرایش مخاطب</string>
+    <string name="menu_delete_contact">پاک کردن مخاطب</string>
+
+    <string name="delete">پاک کن</string>
+    <string name="cancel">لغو</string>
+    <string name="ensure_delete">از پاک کردن مخاطب مطمئن هستید؟</string>
+</resources>
